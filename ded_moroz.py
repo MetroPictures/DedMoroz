@@ -10,8 +10,10 @@ class DedMoroz(MPServerAPI):
 		logging.basicConfig(filename=self.conf['d_files']['module']['log'], level=logging.DEBUG)
 
 	def play_voiceover(self):
-		#loops!
-		return self.play(os.path.join("prompts", "DED_MOROZ.wav"))
+		if self.say(os.path.join("prompts", "Ded_Moroz.wav"), interruptable=False):
+			return self.play_voiceover()
+
+		return False
 
 	def run_script(self):
 		super(DedMoroz, self).run_script()
